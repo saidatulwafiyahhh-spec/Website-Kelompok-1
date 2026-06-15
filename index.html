@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Suhu dan Kelembaban Ruangan</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>IoT Monitor</h2>
+
+            <ul>
+
+    <li>
+        <a href="#dashboard">
+            🏠 Dashboard
+        </a>
+    </li>
+
+    <li>
+        <a href="#grafik">
+            📈 Grafik
+        </a>
+    </li>
+
+    <li>
+        <a href="#riwayat">
+            📋 Riwayat
+        </a>
+    </li>
+
+    <li>
+        <a href="#pengaturan">
+            ⚙️ Pengaturan
+        </a>
+    </li>
+
+</ul>
+        </aside>
+
+        <!-- Konten Utama -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="header" id="dashboard">
+
+    <div>
+        <h1>🌡️ Monitoring Suhu & Kelembaban</h1>
+        <p class="subtitle">Sistem Monitoring IoT Real-Time</p>
+    </div>
+
+    <div class="header-right">
+        <div id="datetime"></div>
+    </div>
+
+</header>
+
+            <!-- Card -->
+            <section class="cards">
+
+                <div class="card">
+                    <h3>🌡️ Suhu</h3>
+                    <p id="suhu">28°C</p>
+                </div>
+
+                <div class="card">
+                    <h3>💧 Kelembaban</h3>
+                    <p id="kelembaban">75%</p>
+                </div>
+
+                <div class="card">
+                    <h3>📌 Status</h3>
+                    <p id="status">Normal</p>
+                </div>
+                <div class="card">
+    <h3>📈 Suhu Maks</h3>
+    <p id="suhuMax">28°C</p>
+
+<!--
+... card-card tersebut ...
+-->
+</div>
+
+<div class="card">
+    <h3>📉 Suhu Min</h3>
+    <p id="suhuMin">28°C</p>
+</div>
+
+<div class="card">
+    <h3>📊 Rata-rata</h3>
+    <p id="suhuAvg">28°C</p>
+</div>
+
+<div class="card">
+    <h3>💧 Kelembaban Maks</h3>
+    <p id="kelembabanMax">75%</p>
+</div>
+
+<div class="card">
+    <h3>💧 Kelembaban Min</h3>
+    <p id="kelembabanMin">75%</p>
+</div>
+
+<div class="card">
+    <h3>💧 Kelembaban Rata-rata</h3>
+    <p id="kelembabanAvg">75%</p>
+</div>
+
+            </section>
+
+            <div class="monitoring-row">
+
+            <section class="gauge-section">
+
+    <div class="gauge-container">
+
+    <h2>🌡️ Gauge Monitoring Suhu</h2>
+
+    <div class="gauge-value">
+        <span id="gaugeValue">28°C</span>
+    </div>
+
+    <div class="gauge">
+        <div id="gaugeFill" class="gauge-fill"></div>
+    </div>
+    <p id="gaugeStatus">Normal</p>
+</div>
+
+</section>
+
+<section class="chart-container" id="grafik">
+
+    <h2>Grafik Monitoring</h2>
+
+    <canvas id="myChart"></canvas>
+
+</section>
+
+</div>
+
+            <section class="alert-container">
+
+    <div id="alertBox" class="alert normal-alert">
+        🟢 Kondisi Ruangan Normal
+    </div>
+
+</section>
+            
+<div class="info-row">
+
+<section class="device-info">
+
+    <div class="info-card">
+
+        <h2>🏢 Informasi Ruangan</h2>
+
+        <p><strong>Nama Ruangan :</strong> Lab Komputer A</p>
+        <p><strong>Lokasi :</strong> Gedung Fakultas Sains Dan Teknologi</p>
+        <p><strong>Mikrokontroler :</strong> ESP32</p>
+        <p><strong>Sensor :</strong> DHT22</p>
+
+        <p>
+            <strong>Status :</strong>
+            <span class="online">🟢 Online</span>
+        </p>
+
+        <p><strong>Update Data :</strong> Real-Time</p>
+
+    </div>
+
+</section>
+
+<section class="connection-info">
+
+    <div class="info-card">
+
+        <h2>📶 Status Koneksi IoT</h2>
+
+        <p><strong>WiFi :</strong> 🟢 Terhubung</p>
+
+        <p><strong>ESP32 :</strong> 🟢 Online</p>
+
+        <p><strong>DHT22 :</strong> 🟢 Aktif</p>
+
+        <p><strong>MQTT :</strong> 🟢 Connected</p>
+
+        <p><strong>Database :</strong> 🟢 Local Storage</p>
+
+    </div>
+
+</section>
+
+</div>
+
+<section class="connection-info">
+
+    <div class="info-card">
+
+        <h2>📶 Status Koneksi IoT</h2>
+
+        <p>
+            <strong>WiFi :</strong>
+            <span class="online">🟢 Terhubung</span>
+        </p>
+
+        <p>
+            <strong>ESP32 :</strong>
+            <span class="online">🟢 Online</span>
+        </p>
+
+        <p>
+            <strong>Sensor DHT22 :</strong>
+            <span class="online">🟢 Aktif</span>
+        </p>
+
+    </div>
+
+</section>
+
+<section class="history-container" id="riwayat">
+
+    <h2>📋 Riwayat Monitoring</h2>
+
+<button onclick="resetData()" class="reset-btn">
+    🗑 Reset Data Monitoring
+</button>
+    <div class="history-info">
+        <p>Total Data Tersimpan : <span id="totalData">0</span></p>
+        <p>Update Terakhir : <span id="lastUpdate">-</span></p>
+    </div>
+
+    <table id="historyTable">
+
+        <thead>
+            <tr>
+                <th>Jam</th>
+                <th>Suhu</th>
+                <th>Kelembaban</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="device-info" id="pengaturan">
+
+    <div class="info-card">
+
+        <h2>⚙️ Pengaturan Sistem</h2>
+
+        <p>Versi Dashboard : 1.0</p>
+
+        <p>Status Sistem : Aktif</p>
+
+        <p>Koneksi IoT : Online</p>
+
+        <p>Universitas : UNUGIRI Bojonegoro</p>
+
+    </div>
+
+</section>
+<footer class="footer">
+    <p>Dashboard Monitoring Suhu dan Kelembaban Ruangan</p>
+    <p>Mata kuliah Desain dan Aplikasi IoT - Kelompok 1</p>
+</footer>
+        </main>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
